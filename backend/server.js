@@ -40,4 +40,7 @@ app.use("/api/setup", setupRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/admins", adminsRouter);
 
-app.listen(8001, () => console.log("Server running on port 8001"));
+const PORT = process.env.PORT || 8001;
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
