@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const util = require("util");
 
 const CmsShopDB = mysql.createConnection({
@@ -7,10 +7,10 @@ const CmsShopDB = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DATABASE,
   port: process.env.DB_PORT,
-  authProtocol: 'xprotocol',
   ssl: {
     rejectUnauthorized: false
-  }
+  },
+  charset: 'utf8mb4'
 });
 
 // تبدیل متد query به Promise-based
