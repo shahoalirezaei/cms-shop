@@ -7,6 +7,10 @@ const CmsShopDB = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DATABASE,
   port: process.env.DB_PORT,
+  authProtocol: 'xprotocol',
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 // تبدیل متد query به Promise-based
