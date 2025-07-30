@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ErrorBox from "../errorBox/ErrorBox";
+import { API_ENDPOINTS } from "../../config/api";
 import {
   FaEdit,
   FaInfoCircle,
