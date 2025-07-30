@@ -8,10 +8,10 @@ const offsRouter = express.Router();
 // GET all offs (بدون نیاز به احراز هویت)
 offsRouter.get('/', (req, res) => {
     let selectAllOffsQuery = `
-      SELECT Offs.id, Offs.code, Offs.date, Offs.isActive, Offs.percent, Admins.firstname as adminID, Products.title as productID 
-      FROM Offs 
-      INNER JOIN Admins ON Admins.id = Offs.adminID 
-      INNER JOIN Products ON Products.id = Offs.productID
+      SELECT offs.id, offs.code, offs.date, offs.isActive, offs.percent, admins.firstname as adminID, products.title as productID 
+      FROM offs 
+      INNER JOIN admins ON admins.id = offs.adminID 
+      INNER JOIN products ON products.id = offs.productID
     `;
 
     CmsShopDB.query(selectAllOffsQuery, (err, result) => {

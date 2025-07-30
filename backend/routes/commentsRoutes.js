@@ -7,7 +7,7 @@ const commentsRouter = express.Router();
 
 // GET همه میتونن ببینن، بدون auth
 commentsRouter.get("/", (req, res) => {
-  let selectAllCommentsQuery = `SELECT Comments.id, Comments.isAccept , Comments.body, Comments.date, Comments.hour, Users.firsname as userID, Products.title as productID FROM Comments INNER JOIN Users ON Users.id = Comments.userID INNER JOIN Products ON Products.id = Comments.productID`;
+  let selectAllCommentsQuery = `SELECT comments.id, comments.isAccept, comments.body, comments.date, comments.hour, users.firsname as userID, products.title as productID FROM comments INNER JOIN users ON users.id = comments.userID INNER JOIN products ON products.id = comments.productID`;
 
   CmsShopDB.query(selectAllCommentsQuery, (err, result) => {
     if (err) {
