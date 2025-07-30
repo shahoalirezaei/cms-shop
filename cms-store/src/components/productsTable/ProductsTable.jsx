@@ -155,7 +155,7 @@ function ProductsTable({ allProduct, getAllProduct }) {
                   <td className="text-center hidden sm:table-cell px-4 py-2">
                     {product.img ? (
                       <img
-                        src={product.img}
+                        src={`/img/${product.img.split('/').pop()}`}
                         alt="Product"
                         className="w-20 lg:w-32 rounded-lg object-cover"
                       />
