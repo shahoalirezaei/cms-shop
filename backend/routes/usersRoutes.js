@@ -6,7 +6,7 @@ const usersRouter = express.Router();
 
 // GET همه کاربران بدون احراز هویت
 usersRouter.get("/", (req, res) => {
-  let selectAllUsersQuery = `SELECT * FROM Users`;
+  let selectAllUsersQuery = `SELECT * FROM users`;
 
   CmsShopDB.query(selectAllUsersQuery, (err, result) => {
     if (err) {

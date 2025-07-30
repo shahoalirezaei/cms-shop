@@ -6,7 +6,7 @@ const productsRouter = express.Router();
 
 // GET همه محصولات بدون نیاز به احراز هویت
 productsRouter.get("/", (req, res) => {
-  const selectAllProductsQuery = `SELECT * FROM Products`;
+  const selectAllProductsQuery = `SELECT * FROM products`;
   CmsShopDB.query(selectAllProductsQuery, (err, result) => {
     if (err) {
       console.error(err);
