@@ -4,6 +4,7 @@ import DetailsModal from "../../components/detailsModal/DetailsModal";
 import DeleteModal from "../../components/deleteModal/DeleteModal";
 import { toast } from "react-toastify";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
+import { API_ENDPOINTS } from "../../config/api";
 import { FaInfoCircle, FaTrash, FaCheck, FaTimes } from "react-icons/fa";
 
 function Orders() {
@@ -28,7 +29,7 @@ function Orders() {
   }, []);
 
   const getAllOreders = async () => {
-    const { error, data } = await authFetch("http://localhost:8001/api/orders");
+    const { error, data } = await authFetch(API_ENDPOINTS.ORDERS);
     if (error) {
       console.error("Fetch error:", error);
     } else {
@@ -41,7 +42,7 @@ function Orders() {
     const isActiveNumber = isActive === true || isActive === "true" ? 1 : 0;
 
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/orders/active-order/${orderID}/${isActiveNumber}`,
+      API_ENDPOINTS.ORDER_STATUS(orderID, isActiveNumber),
       "PUT"
     );
     if (error) {
@@ -64,7 +65,7 @@ function Orders() {
     console.log("deleted");
 
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/orders/${orderID}`,
+      API_ENDPOINTS.ORDER_BY_ID(orderID),
       "DELETE"
     );
     if (error) {

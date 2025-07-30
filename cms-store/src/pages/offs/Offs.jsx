@@ -3,6 +3,7 @@ import ErrorBox from "../../components/errorBox/ErrorBox";
 import DetailsModal from "../../components/detailsModal/DetailsModal";
 import DeleteModal from "../../components/deleteModal/DeleteModal";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
+import { API_ENDPOINTS } from "../../config/api";
 // import EditModal from "../../components/editModal/EditModal";
 // import { AiOutlineDollarCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -38,7 +39,7 @@ function Offs() {
   }, []);
 
   const getAllOffs = async () => {
-    const { error, data } = await authFetch("http://localhost:8001/api/offs");
+    const { error, data } = await authFetch(API_ENDPOINTS.OFFS);
     if (error) {
       console.error("Fetch error:", error);
     } else {
@@ -51,7 +52,7 @@ function Offs() {
     console.log(offID, isActive);
 
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/offs/active-off/${offID}/${isActiveNumber}`,
+      API_ENDPOINTS.OFF_STATUS(offID, isActiveNumber),
       "PUT"
     );
     if (error) {
@@ -74,7 +75,7 @@ function Offs() {
   const submitActionDeleteModal = async () => {
     console.log("deleted");
     try {
-      await fetch(`http://localhost:8001/api/offs/${offID}`, {
+      await fetch(API_ENDPOINTS.OFF_BY_ID(offID), {
         method: "DELETE",
       })
         .then(async (res) => {

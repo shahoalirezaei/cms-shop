@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AddNewProduct from "../../components/addNewProduct/AddNewProduct";
 import ProductsTable from "../../components/productsTable/ProductsTable";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
+import { API_ENDPOINTS } from "../../config/api";
 
 
 
@@ -15,7 +16,7 @@ function Products() {
 
   const getAllProduct = async () => {
     const { error, data } = await authFetch(
-      "http://localhost:8001/api/products"
+      API_ENDPOINTS.PRODUCTS
     );
 
     if (error) {

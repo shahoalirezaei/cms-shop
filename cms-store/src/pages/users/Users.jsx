@@ -6,6 +6,7 @@ import EditModal from "../../components/editModal/EditModal";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
+import { API_ENDPOINTS } from "../../config/api";
 import { FaEdit, FaInfoCircle, FaTrash } from "react-icons/fa";
 
 function Users() {
@@ -34,7 +35,7 @@ function Users() {
   }, []);
 
   const getAllUsers = async () => {
-    const { error, data } = await authFetch("http://localhost:8001/api/users");
+    const { error, data } = await authFetch(API_ENDPOINTS.USERS);
     if (error) {
       console.error("Fetch error:", error);
     } else {
@@ -88,7 +89,7 @@ function Users() {
     }
 
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/users/${userID}`,
+      API_ENDPOINTS.USER_BY_ID(userID),
       "PUT",
       newUserInfos
     );
@@ -112,7 +113,7 @@ function Users() {
     // console.log('submited');
 
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/users/${userID}`,
+      API_ENDPOINTS.USER_BY_ID(userID),
       "DELETE"
     );
     if (error) {

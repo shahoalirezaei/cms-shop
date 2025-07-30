@@ -19,7 +19,7 @@ function LastOrdersTable() {
 
   const getLastOreders = async () => {
     try {
-      await fetch("http://localhost:8001/api/orders")
+      await fetch(API_ENDPOINTS.ORDERS)
         .then(async (res) => {
           if (!res.ok) {
             throw new Error(`Server Error: ${res.status}`);

@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import { useEffect, useState } from "react";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
+import { API_ENDPOINTS } from "../../config/api";
 
 function MonthlySalesChart() {
   const { authFetch } = useAuthFetch();
@@ -21,7 +22,7 @@ function MonthlySalesChart() {
   }, []);
   const getData = async () => {
     const { error, data } = await authFetch(
-      "http://localhost:8001/api/monthly-sales"
+      API_ENDPOINTS.MONTHLY_SALES
     );
     if (error) {
       console.log(error);
