@@ -169,7 +169,7 @@ function Users() {
                 <tr key={user.id} className="hover:bg-gray-50">
                   <td className="text-center sm:pl-0  hidden sm:table-cell lg:flex items-center justify-center flex-col flex-wrap sm:px-4 py-2  text-gray-800 whitespace-nowrap text-sm ">
                     <img
-                      src={user.img ? user.img : ""}
+                      src={user.img ? `/img/${user.img.split('/').pop()}` : ""}
                       className="w-10 h-10 rounded-2xl mb-1.5 object-contain mx-auto"
                     />
                     <p className=" flex-wrap line-clamp-2 max-w-[150px] hidden lg:table-cell">

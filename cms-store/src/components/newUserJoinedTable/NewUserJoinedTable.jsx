@@ -50,7 +50,7 @@ function NewUserJoinedTable({ details, isShowDetails }) {
           <div key={user.id} className="w-full flex justify-between items-center py-3 pl-2.5 ">
             <div className="w-1/3 md:hidden lg:block">
                 <img
-              src={user.img ? user.img : ""}
+              src={user.img ? `/img/${user.img.split('/').pop()}` : ""}
               className="w-12 h-12 rounded-full mb-1.5 object-contain  "
             />
             </div>
