@@ -83,7 +83,7 @@ function ProductsTable({ allProduct, getAllProduct }) {
       });
     }
 
-    // fetch(`http://localhost:8001/api/products/${productID}`, {
+    
     //   method: "PUT",
     //   headers: {
     //     "Content-Type": "application/json",
