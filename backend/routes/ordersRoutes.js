@@ -9,12 +9,12 @@ const ordersRouter = express.Router();
 ordersRouter.get("/", (req, res) => {
   const selectAllOrdersQuery = `
     SELECT 
-      Orders.id, Orders.date, Orders.hour, Orders.price, Orders.off, Orders.sale, 
-      Orders.popularity, Orders.count, Orders.sale_count, Orders.isActive, 
-      Users.firsname as userID, Products.title as productID 
-    FROM Orders 
-    INNER JOIN Users ON Users.id = Orders.userID 
-    INNER JOIN Products ON Products.id = Orders.productID
+      orders.id, orders.date, orders.hour, orders.price, orders.off, orders.sale, 
+      orders.popularity, orders.count, orders.sale_count, orders.isActive, 
+      users.firsname as userID, products.title as productID 
+    FROM orders 
+    INNER JOIN users ON users.id = orders.userID 
+    INNER JOIN products ON products.id = orders.productID
   `;
 
   CmsShopDB.query(selectAllOrdersQuery, (err, result) => {
