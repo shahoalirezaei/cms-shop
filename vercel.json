@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "cd cms-store && npm run build",
+  "outputDirectory": "cms-store/dist",
   "framework": "vite",
   "rewrites": [
     {
