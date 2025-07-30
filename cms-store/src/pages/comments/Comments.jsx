@@ -5,6 +5,7 @@ import DeleteModal from "../../components/deleteModal/DeleteModal";
 import EditModal from "../../components/editModal/EditModal";
 import { toast } from "react-toastify";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
+import { API_ENDPOINTS } from "../../config/api";
 import {
   FaEdit,
   FaTrash,
@@ -56,7 +57,7 @@ function Comments() {
 
   const getAllComments = async () => {
     const { error, data } = await authFetch(
-      "http://localhost:8001/api/comments"
+      API_ENDPOINTS.COMMENTS
     );
     if (error) {
       console.error("Fetch error:", error);
@@ -80,7 +81,7 @@ function Comments() {
     }
 
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/comments/${commentID}`,
+      API_ENDPOINTS.COMMENT_BY_ID(commentID),
       "PUT",
       { body: newCommentBody }
     );
@@ -103,7 +104,7 @@ function Comments() {
 
   const deleteModalSubmitAction = async () => {
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/comments/${commentID}`,
+      API_ENDPOINTS.COMMENT_BY_ID(commentID),
       "DELETE"
     );
     if (error) {
@@ -123,7 +124,7 @@ function Comments() {
 
   const acceptModalSubmitAction = async () => {
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/comments/accept/${commentID}`,
+      API_ENDPOINTS.ACCEPT_COMMENT(commentID),
       "POST"
     );
     if (error) {
@@ -144,7 +145,7 @@ function Comments() {
   };
   const rejectModalSubmitAction = async () => {
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/comments/reject/${commentID}`,
+      API_ENDPOINTS.REJECT_COMMENT(commentID),
       "POST"
     );
     if (error) {

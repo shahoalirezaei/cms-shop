@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
+import { API_ENDPOINTS } from "../../config/api";
 
 function AddNewProduct({ getAllProduct }) {
   const { authFetch } = useAuthFetch();
@@ -19,7 +20,7 @@ function AddNewProduct({ getAllProduct }) {
 
   const getCategories = async () => {
     try {
-      await fetch("http://localhost:8001/api/categories")
+      await fetch(API_ENDPOINTS.CATEGORIES)
         .then(async (res) => {
           // console.log(res);
 
@@ -84,7 +85,7 @@ function AddNewProduct({ getAllProduct }) {
 
     // Send request to backend
     const { error, data } = await authFetch(
-      "http://localhost:8001/api/products",
+      API_ENDPOINTS.PRODUCTS,
       "POST",
       newProduct
     );

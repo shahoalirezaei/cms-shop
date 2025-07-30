@@ -7,6 +7,7 @@ import { FaEdit, FaInfoCircle, FaTrash } from "react-icons/fa";
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
+import { API_ENDPOINTS } from "../../config/api";
 
 function ProductsTable({ allProduct, getAllProduct }) {
   const { authFetch } = useAuthFetch()
@@ -64,7 +65,7 @@ function ProductsTable({ allProduct, getAllProduct }) {
     };
 
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/products/${productID}`,
+      API_ENDPOINTS.PRODUCT_BY_ID(productID),
       "PUT",
       newProductInfos
     );
@@ -83,7 +84,7 @@ function ProductsTable({ allProduct, getAllProduct }) {
       });
     }
 
-    // fetch(`http://localhost:8001/api/products/${productID}`, {
+    // fetch(`API_ENDPOINTS.PRODUCTS/${productID}`, {
     //   method: "PUT",
     //   headers: {
     //     "Content-Type": "application/json",
@@ -135,7 +136,7 @@ function ProductsTable({ allProduct, getAllProduct }) {
   const deleteModalSubmitAction = async () => {
     console.log("submit");
     const { error, data } = await authFetch(
-      `http://localhost:8001/api/products/${productID}`,
+      API_ENDPOINTS.PRODUCT_BY_ID(productID),
       "DELETE"
     );
     if (error) {

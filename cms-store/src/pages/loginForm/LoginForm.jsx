@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { setToken } from "../../components/utils/auth";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
+import { API_ENDPOINTS } from "../../config/api";
 
 function LoginForm() {
   const { authFetch } = useAuthFetch();
@@ -17,7 +18,7 @@ function LoginForm() {
     setError(null);
     
     const { data, error } = await authFetch(
-      "http://localhost:8001/api/auth/login",
+      API_ENDPOINTS.LOGIN,
       "POST",
       { username, password }
     );
