@@ -16,14 +16,24 @@ const categoriesRouter = require("./routes/categoriesRouter");
 const authRouter = require("./routes/auth");
 const setupRouter = require("./routes/setupDemo");
 
-// اتصال به دیتابیس CmsShopDB
-// const CmsShopDB = require("./db/CmsShopDB"); // همان فایلی که اتصال را ایجاد می‌کند
-
 const app = express();
 
-// CORS configuration for production
+// List of allowed origins for CORS
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://stotre-panel-admin.vercel.app'
+];
+
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || "*",
+  origin: function(origin, callback) {
+    // allow requests with no origin like Postman or curl
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) !== -1){
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   optionsSuccessStatus: 200
 };
@@ -32,10 +42,10 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.json());
 
-// اگر بخواهی، می‌توانی این اتصال را در app ذخیره کنی:
+// Store DB connection in app if needed
 app.set("db", CmsShopDB);
 
-// مسیرهای API
+// API routes
 app.use("/api/products", productsRouter);
 app.use("/api/comments", commentsRouter);
 app.use("/api/users", usersRouter);
@@ -48,6 +58,4 @@ app.use("/api/auth", authRouter);
 app.use("/api/admins", adminsRouter);
 
 const PORT = process.env.PORT || 8001;
-
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
