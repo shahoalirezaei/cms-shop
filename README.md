@@ -179,3 +179,5 @@ Created by **Shaho Alirezaei** as a junior frontend showcase project.
 For questions or job opportunities, feel free to contact me:
 
 - Email: [shahoalirezaei95@gmail.com](mailto:shahoalirezaei95@gmail.com)
+
+Thank you.
