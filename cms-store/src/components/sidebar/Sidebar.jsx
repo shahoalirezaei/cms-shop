@@ -18,6 +18,8 @@ function Sidebar({ isOpen, onClose }) {
 
   useEffect(() => {
     checkIsAdmin();
+    console.log(isAdmin);
+    
     function handleClickOutside(event) {
       if (
         isOpen &&
