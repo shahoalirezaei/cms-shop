@@ -22,7 +22,7 @@ commentsRouter.get("/", (req, res) => {
 commentsRouter.delete("/:commentID", authenticate, authorizeRole(["admin"]), (req, res) => {
   let commentID = req.params.commentID;
 
-  let deleteCommentQuery = `DELETE FROM Comments WHERE id = ${commentID}`;
+  let deleteCommentQuery = `DELETE FROM comments WHERE id = ${commentID}`;
   CmsShopDB.query(deleteCommentQuery, (err, result) => {
     if (err) {
       res.send(null);
@@ -35,7 +35,7 @@ commentsRouter.delete("/:commentID", authenticate, authorizeRole(["admin"]), (re
 // فقط ادمین اجازه داره ویرایش کنه
 commentsRouter.put("/:commentID", authenticate, authorizeRole(["admin"]), (req, res) => {
   let commentID = req.params.commentID;
-  let editCommentQuery = `UPDATE Comments SET body="${req.body.body}" WHERE id = ${commentID}`;
+  let editCommentQuery = `UPDATE comments SET body="${req.body.body}" WHERE id = ${commentID}`;
 
   CmsShopDB.query(editCommentQuery, (err, result) => {
     if (err) {
@@ -49,7 +49,7 @@ commentsRouter.put("/:commentID", authenticate, authorizeRole(["admin"]), (req, 
 // فقط ادمین اجازه داره تایید کنه
 commentsRouter.post("/accept/:commentID", authenticate, authorizeRole(["admin"]), (req, res) => {
   let commentID = req.params.commentID;
-  let editCommentQuery = `UPDATE Comments SET isAccept = 1 WHERE id = ${commentID}`;
+  let editCommentQuery = `UPDATE comments SET isAccept = 1 WHERE id = ${commentID}`;
 
   CmsShopDB.query(editCommentQuery, (err, result) => {
     if (err) {
@@ -63,7 +63,7 @@ commentsRouter.post("/accept/:commentID", authenticate, authorizeRole(["admin"])
 // فقط ادمین اجازه داره رد کنه
 commentsRouter.post("/reject/:commentID", authenticate, authorizeRole(["admin"]), (req, res) => {
   let commentID = req.params.commentID;
-  let editCommentQuery = `UPDATE Comments SET isAccept = 0 WHERE id = ${commentID}`;
+  let editCommentQuery = `UPDATE comments SET isAccept = 0 WHERE id = ${commentID}`;
 
   CmsShopDB.query(editCommentQuery, (err, result) => {
     if (err) {

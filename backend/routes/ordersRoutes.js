@@ -29,7 +29,7 @@ ordersRouter.get("/", (req, res) => {
 // DELETE order (فقط ادمین)
 ordersRouter.delete("/:orderID", authenticate, authorizeRole(['admin']), (req, res) => {
   const orderID = req.params.orderID;
-  const deleteOrderQuery = `DELETE FROM Orders WHERE id = ?`;
+  const deleteOrderQuery = `DELETE FROM orders WHERE id = ?`;
 
   CmsShopDB.query(deleteOrderQuery, [orderID], (err, result) => {
     if (err) {
@@ -51,7 +51,7 @@ ordersRouter.put("/active-order/:orderID/:isActive", authenticate, authorizeRole
   // console.log("Parsed values →", { orderID, isActive });
   
 
-  const activeOrderQuery = `UPDATE Orders SET isActive = ? WHERE id = ?`;
+  const activeOrderQuery = `UPDATE orders SET isActive = ? WHERE id = ?`;
 
   CmsShopDB.query(activeOrderQuery, [isActive, orderID], (err, result) => {
     if (err) {

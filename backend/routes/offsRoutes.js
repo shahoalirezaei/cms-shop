@@ -26,7 +26,7 @@ offsRouter.get('/', (req, res) => {
 // DELETE off (فقط ادمین)
 offsRouter.delete('/:offID', authenticate, authorizeRole(['admin']), (req, res) => {
     let offID = req.params.offID;
-    let deleteOffQuery = `DELETE FROM Offs WHERE id = ?`;
+    let deleteOffQuery = `DELETE FROM offs WHERE id = ?`;
 
     CmsShopDB.query(deleteOffQuery, [offID], (err, result) => {
         if (err) {
@@ -41,7 +41,7 @@ offsRouter.delete('/:offID', authenticate, authorizeRole(['admin']), (req, res) 
 offsRouter.put('/active-off/:offID/:isActive', authenticate, authorizeRole(['admin']), (req, res) => {
     let offID = req.params.offID;
     let isActive = req.params.isActive;
-    let activeOffQuery = `UPDATE Offs SET isActive=? WHERE id = ?`;
+    let activeOffQuery = `UPDATE offs SET isActive=? WHERE id = ?`;
 
     CmsShopDB.query(activeOffQuery, [isActive, offID], (err, result) => {
         if (err) {
