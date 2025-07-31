@@ -33,12 +33,15 @@ function Sidebar({ isOpen, onClose }) {
     return () => {
       document.removeEventListener("touchend", handleClickOutside);
     };
-  }, [isOpen, onClose, checkIsAdmin]);
+  }, [isOpen, onClose, isAdmin]);
 
   const checkIsAdmin = () => {
-    const user = localStorage.getItem("token");
+    const user = localStorage.getItem("user");
     if (user) {
+      if(user.role === "admin"){
+
         setIsAdmin(true); 
+      }
     }else {
       setIsAdmin(false)
     }
