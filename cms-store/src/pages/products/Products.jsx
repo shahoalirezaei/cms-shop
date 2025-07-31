@@ -23,7 +23,9 @@ function Products() {
     if (error) {
       console.error("Fetch error:", error);
     } else {
-      const reverseData = [...data].reverse();
+      const reverseData = Array.isArray(data) ? [...data].reverse() : [];
+
+      // const reverseData = [...data].reverse();
       console.log("Calling authFetch for products");
       setAllProducts(reverseData);
     }
