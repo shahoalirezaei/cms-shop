@@ -40,7 +40,7 @@ function Sidebar({ isOpen, onClose }) {
   const checkIsAdmin =  async () => {
     const user = await localStorage.getItem("user");
     if (user) {
-      console.log(user.role);
+      console.log(user);
       
       if(user.role === "admin"){
 
