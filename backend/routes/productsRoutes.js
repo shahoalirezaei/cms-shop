@@ -32,7 +32,7 @@ productsRouter.post("/", authenticate, authorizeRole(["admin"]), (req, res) => {
   } = req.body;
 
   const insertQuery = `
-    INSERT INTO Products
+    INSERT INTO products
       (title, price, count, img, popularity, sale, colors, url, productDesc, categoryID)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
@@ -72,7 +72,7 @@ productsRouter.put("/:productID", authenticate, authorizeRole(["admin"]), (req, 
   } = req.body;
 
   const updateProductQuery = `
-    UPDATE Products SET 
+    UPDATE products SET 
       title = ?, 
       price = ?, 
       count = ?, 
