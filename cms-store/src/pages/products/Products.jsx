@@ -11,6 +11,7 @@ function Products() {
   const { authFetch } = useAuthFetch();
 
   useEffect(() => {
+    console.log("Running useEffect to get all products");
     getAllProduct();
   }, []);
 
@@ -23,6 +24,7 @@ function Products() {
       console.error("Fetch error:", error);
     } else {
       const reverseData = [...data].reverse();
+      console.log("Calling authFetch for products");
       setAllProducts(reverseData);
     }
 

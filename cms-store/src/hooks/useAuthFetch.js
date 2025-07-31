@@ -34,13 +34,13 @@ export const useAuthFetch = () => {
     } catch (error) {
       return { error, data: null };
     } finally {
+      console.log("Request finished, setting loading false");
       setLoading(false);
     }
   };
 
   return { authFetch };
 };
-
 
 // export const useAuthFetch = () => {
 //   const { setLoading } = useContext(LoadingContext);
