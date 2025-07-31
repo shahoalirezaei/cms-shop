@@ -13,7 +13,7 @@ import "./Sidebar.css";
 
 function Sidebar({ isOpen, onClose }) {
   const sidebarRef = useRef();
-  const [isAdmin, setIsAdmin] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function Sidebar({ isOpen, onClose }) {
     return () => {
       document.removeEventListener("touchend", handleClickOutside);
     };
-  }, [isOpen, onClose, isAdmin]);
+  }, [isOpen, onClose]);
 
   const checkIsAdmin = () => {
     const user = localStorage.getItem("user");
@@ -42,8 +42,6 @@ function Sidebar({ isOpen, onClose }) {
 
         setIsAdmin(true); 
       }
-    }else {
-      setIsAdmin(false)
     }
   };
   const redirectToLogIn = () => {
