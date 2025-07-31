@@ -76,7 +76,7 @@ function ProductsTable({ allProduct, getAllProduct }) {
         autoClose: 3000,
       });
     } else {
-      getAllProduct();
+      await getAllProduct();
 
       toast.success(`Success! Product is update`, {
         position: "bottom-left",
@@ -100,7 +100,7 @@ function ProductsTable({ allProduct, getAllProduct }) {
       });
     } else {
       console.log(data);
-      getAllProduct();
+      await getAllProduct();
       toast.success("Success! product deleted", {
         position: "bottom-left",
         autoClose: 3000,
