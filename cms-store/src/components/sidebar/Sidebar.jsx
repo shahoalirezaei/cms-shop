@@ -18,7 +18,7 @@ function Sidebar({ isOpen, onClose }) {
 
   useEffect(() => {
     checkIsAdmin();
-    console.log(isAdmin);
+    // console.log(isAdmin);
     
     function handleClickOutside(event) {
       if (
@@ -35,22 +35,22 @@ function Sidebar({ isOpen, onClose }) {
     return () => {
       document.removeEventListener("touchend", handleClickOutside);
     };
-  }, [isOpen, onClose, isAdmin]);
+  }, [isOpen, onClose]);
 
-  const checkIsAdmin =  async () => {
-    const token = await localStorage.getItem("token");
-    if (token) {
-      // console.log(user.role);
-      
-      if(token === "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUzOTgwMjExLCJleHAiOjE3NTM5OTQ2MTF9.TtNvxCUOVkSsQeMYexGvScG1CLzErlAU7pC-H-21HpY"){
-
-        setIsAdmin(true); 
-      }
-    }else {
-      setIsAdmin(false); 
-
+ const checkIsAdmin = () => {
+  const user = localStorage.getItem("user");
+  if (user) {
+    const parsedUser = JSON.parse(user);
+    if (parsedUser.role === "admin") {
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
     }
-  };
+  } else {
+    setIsAdmin(false);
+  }
+};
+
   const redirectToLogIn = () => {
     navigate("/login");
   };
