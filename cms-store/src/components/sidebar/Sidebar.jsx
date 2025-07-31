@@ -38,11 +38,11 @@ function Sidebar({ isOpen, onClose }) {
   }, [isOpen, onClose, isAdmin]);
 
   const checkIsAdmin =  async () => {
-    const user = await localStorage.getItem("user");
-    if (user) {
-      console.log(user.role);
+    const token = await localStorage.getItem("token");
+    if (token) {
+      // console.log(user.role);
       
-      if(user.role==="admin"){
+      if(token === "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzUzOTgwMjExLCJleHAiOjE3NTM5OTQ2MTF9.TtNvxCUOVkSsQeMYexGvScG1CLzErlAU7pC-H-21HpY"){
 
         setIsAdmin(true); 
       }
