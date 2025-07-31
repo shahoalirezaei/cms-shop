@@ -13,7 +13,7 @@ import "./Sidebar.css";
 
 function Sidebar({ isOpen, onClose }) {
   const sidebarRef = useRef();
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,8 +37,8 @@ function Sidebar({ isOpen, onClose }) {
     };
   }, [isOpen, onClose, isAdmin]);
 
-  const checkIsAdmin = () => {
-    const user = localStorage.getItem("user");
+  const checkIsAdmin =  async () => {
+    const user = await localStorage.getItem("user");
     if (user) {
       console.log(user.role);
       
@@ -46,6 +46,9 @@ function Sidebar({ isOpen, onClose }) {
 
         setIsAdmin(true); 
       }
+    }else {
+      setIsAdmin(false); 
+
     }
   };
   const redirectToLogIn = () => {
