@@ -13,7 +13,7 @@ import "./Sidebar.css";
 
 function Sidebar({ isOpen, onClose }) {
   const sidebarRef = useRef();
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,9 +40,9 @@ function Sidebar({ isOpen, onClose }) {
   const checkIsAdmin =  async () => {
     const user = await localStorage.getItem("user");
     if (user) {
-      console.log(user);
+      console.log(user.role);
       
-      if(user.role === "admin"){
+      if(user.role==="admin"){
 
         setIsAdmin(true); 
       }
