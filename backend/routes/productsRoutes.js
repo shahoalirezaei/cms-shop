@@ -96,7 +96,7 @@ productsRouter.put("/:productID", authenticate, authorizeRole(["admin"]), (req, 
 // DELETE حذف محصول - فقط ادمین
 productsRouter.delete("/:productID", authenticate, authorizeRole(["admin"]), (req, res) => {
   const productID = req.params.productID;
-  const deleteProductQuery = `DELETE FROM Products WHERE id = ?`;
+  const deleteProductQuery = `DELETE FROM products WHERE id = ?`;
 
   CmsShopDB.query(deleteProductQuery, [productID], (err, result) => {
     if (err) {
