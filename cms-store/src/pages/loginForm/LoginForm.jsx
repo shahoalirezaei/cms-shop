@@ -94,6 +94,19 @@ function LoginForm() {
                     Submit
                   </button>
                 </div>
+                
+                {/* Demo Login Button */}
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigate("/")
+                    }}
+                    className="bg-cyan-100 text-cyan-700 rounded-md px-2 py-1 w-full mt-2 hover:bg-cyan-200 transition duration-150"
+                  >
+                    Continue as Demo User
+                  </button>
+                </div>
               </div>
             </div>
             <div className="w-full flex justify-center">
@@ -103,6 +116,7 @@ function LoginForm() {
                 <span>Continue with Google</span>
               </button>
             </div>
+            
           </div>
         </div>
       </div>
