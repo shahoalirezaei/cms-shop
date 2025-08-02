@@ -1,3 +1,5 @@
+> 🚧 **WIP**: This project is currently a Work In Progress. Some features may not be fully functional yet.
+
 # 🛒 CMS Shop Admin Panel
 
 A modern, fully responsive **Shop Admin Panel**, built using **React (Vite)** for the frontend and **Node.js + Express + MySQL** for the backend.  
@@ -7,8 +9,7 @@ This project includes real features like authentication, user roles, product and
 ---
 
 ## 🚀 Demo
-
-You can view the live project here: [Live Demo](https://your-demo-url.com)
+You can view the live project here: [Live Demo](https://stotre-panel-admin.vercel.app/)
 
 
 ## ⚙️ Tech Stack
@@ -59,6 +60,25 @@ cms_shop_vite/
 - Middleware for protected and role-based routes
 - Orders, products, users, comments, and discount APIs
 - MySQL relational database (via `mysql2`)
+
+---
+## 🧯 Project Status & Known Issues
+
+This project is currently **in development**, and there are a few issues being actively worked on:
+
+### ✅ Working:
+- Most APIs are functional and integrated into the frontend.
+- Admin login, role-based access, and global loading are implemented.
+
+### ⚠️ Known Issues:
+- `GET` requests on `/api/products` work, but `POST`, `PUT`, and `DELETE` may cause the frontend to freeze or return 502 error (possibly due to CORS or backend server config).
+- JWT secret may not be properly recognized on Railway; the environment variable (`JWT_SECRET`) needs review.
+- Some backend endpoints are only partially tested.
+
+### 📌 Notes:
+- Backend is deployed via Railway.
+- Frontend is deployed on Vercel: [stotre-panel-admin.vercel.app](https://stotre-panel-admin.vercel.app/)
+- This project is still evolving, and issues will be resolved incrementally.
 
 ---
 
