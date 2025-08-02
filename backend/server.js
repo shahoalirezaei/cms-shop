@@ -20,19 +20,13 @@ const app = express();
 
 // List of allowed origins for CORS
 const allowedOrigins = [
-  'http://localhost:5173',
-  'https://stotre-panel-admin.vercel.app'
+  "http://localhost:5173",
+  "https://stotre-panel-admin.vercel.app",
 ];
 
 const corsOptions = {
-  origin: function (origin, callback) {
-    // allow requests with no origin (like Postman)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: ["https://stotre-panel-admin.vercel.app"], // یا ['*'] برای همه دامنه‌ها در توسعه
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
 
