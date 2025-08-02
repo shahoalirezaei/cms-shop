@@ -4,12 +4,14 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 
-import { LoadingProvider } from "./context/LoadingContext.jsx"; // ✅ Import context
+import { LoadingProvider } from "./context/LoadingContext.jsx"; 
+import GlobalLoader from "./components/GlobalLoader.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <LoadingProvider> {/* ✅ Wrap App with LoadingProvider */}
+      <LoadingProvider> 
+        <GlobalLoader />
         <App />
       </LoadingProvider>
     </BrowserRouter>
