@@ -4,7 +4,7 @@ import { useAuthFetch } from "../../hooks/useAuthFetch";
 import { API_ENDPOINTS } from "../../config/api";
 import { useProducts } from "../../context/ProductsContext";
 
-function AddNewProduct({ getAllProduct }) {
+function AddNewProduct() {
   const { getAllProduct } = useProducts();
   const { authFetch } = useAuthFetch();
   const [categories, setCategories] = useState([]);
@@ -21,26 +21,12 @@ function AddNewProduct({ getAllProduct }) {
   }, []);
 
   const getCategories = async () => {
-    try {
-      await fetch(API_ENDPOINTS.CATEGORIES)
-        .then(async (res) => {
-          // console.log(res);
-
-          if (!res.ok) {
-            throw new Error(`Server Error: ${res.status}`);
-          }
-          const text = await res.text();
-          if (!text) {
-            return [];
-          }
-          return JSON.parse(text);
-        })
-        .then((data) => {
-          // console.log(data);
-          setCategories(data);
-        });
-    } catch (error) {
-      // console.log(error);
+    const { error, data } = await authFetch(API_ENDPOINTS.CATEGORIES)
+    if(error) {
+      console.log("Server Error" + error);
+      
+    }else {
+      setCategories(data)
     }
   };
 

@@ -1,12 +1,12 @@
-import React, { Children, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect, useContext } from "react";
 import API_ENDPOINTS from "../config/api";
 import { useAuthFetch } from "../hooks/useAuthFetch";
 
 const ProductsContext = createContext();
 
-export const ProductsProvider = ({ Children }) => {
+export const ProductsProvider = ({ children }) => {
   const [allProduct, setAllProducts] = useState([]);
-  const authFetch = useAuthFetch();
+  const { authFetch } = useAuthFetch();
 
   const getAllProduct = async () => {
     const { error, data } = await authFetch(API_ENDPOINTS.PRODUCTS);
