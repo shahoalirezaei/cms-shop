@@ -42,3 +42,5 @@ Thumbs.db
 *.temp
 cms-store.zip
 .env
+backend/.env
+backend/*.sql
