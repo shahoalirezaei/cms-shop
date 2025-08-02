@@ -102,7 +102,7 @@ function LoginForm() {
                     onClick={() => {
                       navigate("/")
                     }}
-                    className="bg-cyan-100 text-cyan-700 rounded-md px-2 py-1 w-full mt-2 hover:bg-cyan-200 transition duration-150"
+                    className="w-full text-sm text-gray-500 hover:text-blue-700 transition duration-150 text-center mt-2"
                   >
                     Continue as Demo User
                   </button>
