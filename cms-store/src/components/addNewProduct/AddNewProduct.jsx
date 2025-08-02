@@ -80,6 +80,8 @@ function AddNewProduct() {
 
     // Handle response
     if (error) {
+      console.log('erorrrrrrrrrrrrrrrrrrr');
+      
       toast.error("Error! product not creat", {
         position: "bottom-left",
         autoClose: 3000,
