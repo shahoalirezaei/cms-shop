@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
 import { API_ENDPOINTS } from "../../config/api";
+import { useProducts } from "../../context/ProductsContext";
 
 function AddNewProduct({ getAllProduct }) {
+  const { getAllProduct } = useProducts();
   const { authFetch } = useAuthFetch();
   const [categories, setCategories] = useState([]);
   const [newProductTitle, setNewProductTitle] = useState("");

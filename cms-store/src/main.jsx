@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.jsx";
 
 import { LoadingProvider } from "./context/LoadingContext.jsx"; 
+import { ProductsProvider } from "./context/ProductsContext.jsx";
 import GlobalLoader from "./components/GlobalLoader.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -12,7 +13,10 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <LoadingProvider> 
         <GlobalLoader />
+        <ProductsProvider>
+
         <App />
+        </ProductsProvider>
       </LoadingProvider>
     </BrowserRouter>
   </StrictMode>

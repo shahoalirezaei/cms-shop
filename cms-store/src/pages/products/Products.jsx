@@ -7,35 +7,35 @@ import { API_ENDPOINTS } from "../../config/api";
 
 
 function Products() {
-  const [allProduct, setAllProducts] = useState([]);
-  const { authFetch } = useAuthFetch();
+  // const [allProduct, setAllProducts] = useState([]);
+  // const { authFetch } = useAuthFetch();
 
-  useEffect(() => {
-    console.log("Running useEffect to get all products");
-    getAllProduct();
-  }, []);
+  // useEffect(() => {
+  //   console.log("Running useEffect to get all products");
+  //   getAllProduct();
+  // }, []);
 
-  const getAllProduct = async () => {
-    const { error, data } = await authFetch(
-      API_ENDPOINTS.PRODUCTS
-    );
+  // const getAllProduct = async () => {
+  //   const { error, data } = await authFetch(
+  //     API_ENDPOINTS.PRODUCTS
+  //   );
 
-    if (error) {
-      console.error("Fetch error:", error);
-    } else {
-      const reverseData = Array.isArray(data) ? [...data].reverse() : [];
+  //   if (error) {
+  //     console.error("Fetch error:", error);
+  //   } else {
+  //     const reverseData = Array.isArray(data) ? [...data].reverse() : [];
 
-      // const reverseData = [...data].reverse();
-      console.log("Calling authFetch for products");
-      setAllProducts(reverseData);
-    }
+  //     // const reverseData = [...data].reverse();
+  //     console.log("Calling authFetch for products");
+  //     setAllProducts(reverseData);
+  //   }
 
-  };
+  // };
 
   return (
     <div>
-      <AddNewProduct getAllProduct={getAllProduct} />
-      <ProductsTable allProduct={allProduct} getAllProduct={getAllProduct} />
+      <AddNewProduct />
+      <ProductsTable />
     </div>
   );
 }

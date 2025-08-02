@@ -8,8 +8,10 @@ import { AiOutlineDollarCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { useAuthFetch } from "../../hooks/useAuthFetch";
 import { API_ENDPOINTS } from "../../config/api";
+import { useProducts } from "../../context/ProductsContext";
 
-function ProductsTable({ allProduct, getAllProduct }) {
+function ProductsTable() {
+  const { allProduct, getAllProduct } = useProducts();
   const { authFetch } = useAuthFetch()
   const [isShowDetailsModal, setIsShowDetailsModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
